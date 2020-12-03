@@ -15,7 +15,8 @@
 - JUnit5는 전체 프레임워크(단일 jar)가 아닌 세분화된 필요한 것만(모듈 3개) 가져올 수 있음.(JUnit4는 All in One)
 - 달라진 문법 (참고 : https://pureainu.tistory.com/190 )
 
-
+### 예제
+-  https://github.com/keesun/inflearn-the-java-test (출처 : 백기선 git)
 ## 출처
 - https://junit.org/junit5/docs/current/user-guide/
 - https://docs.google.com/document/d/1j6mU7Q5gng1mAJZUKUVya4Rs0Jvn5wn_bCUp3rq41nQ/edit#

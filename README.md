@@ -11,6 +11,10 @@
 - Restful API
 	- HATEOAS
 - WebFlux
+- Lombok
+- Build tools
+	- MAVEN vs Gradle vs Ant
+- JUnit
 
 ### Front-end
 - Bundle
@@ -21,6 +25,10 @@
 - Bootstrap
 - Nuxt.js
 
+### WEB
+- Web Server
+- CORS
+- Browser Camparison
 
 ### Infra
 - Docker
@@ -40,11 +48,15 @@
 - TDD
 - Xp
 
+### API
+- Overseas Stocks API
+- i'mport
+
+### SDK
 
 ### ETC
 - OOP
 	- SOLID
-- MAVEN vs Gradle vs Ant
 - Spring Version
 - Java Version
 - JWT
@@ -53,3 +65,6 @@
 - O(n)
 - Git-flow
 - DB Comparison
+- Library vs Framework vs API
+- IDE Comparison
+

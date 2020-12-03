@@ -30,6 +30,7 @@
 - Redis
 - AWS
 
+
 ### Architecture
 - DDD
 - MSA
@@ -51,3 +52,4 @@
 	- Stack VS Heap
 - O(n)
 - Git-flow
+- DB Comparison

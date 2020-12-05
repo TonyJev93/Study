@@ -1,5 +1,6 @@
 
 
+
 # JUnit
 ## JUnit5
 
@@ -160,7 +161,11 @@ void parameterizedTest(String message) { print(message) }
 	- ctrl + shift + T : 해당 클래스 테스트 생성
 	- ctlrl + P : 파라미터 정보 확인 가능
 - Spring Boot 2.x -> AssertJ, Hamcrest 포함 (JUnit 변형 된 라이브러리)
-
+- JUnit 4 마이그래이션 
+	- Vintage 의존성 추가 필요, Jupiter와 Vintage를 구분하여 테스트에 보여줌.
+	- @Rule은 기본적으로 지원하지 않음.(@EnableRuleMigrationSupport를 사용하면 ExtenalResource, Verifier, ExpectedExeption 지원) <- **junit-jupiter-migrationsupport 모듈**이 제공
+	
+	
 ### 예제
 -  https://github.com/keesun/inflearn-the-java-test (출처 : 백기선 git)
 ## 출처

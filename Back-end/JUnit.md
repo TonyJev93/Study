@@ -151,7 +151,7 @@ void parameterizedTest(String message) { print(message) }
 - **등록 방법**
 	 1. **선언적 등록** : @ExtendWith(FinSlowTestExtension.class)
 	 2. **프로그래밍 등록** : @RegisterExtension > static XxxExtension oo = new XxxExtension( .. );
-	 3. **설정파일 등록** : junit.jupiter.extensions.autodetection.enabled= true 
+	 3. **자동등록 자바 ServiceLoader 이용** (설정파일 등록) : junit.jupiter.extensions.autodetection.enabled= true 
 
 ---
 

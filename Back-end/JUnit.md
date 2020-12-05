@@ -127,12 +127,11 @@ void parameterizedTest(String message) { print(message) }
 - inteliJ 에서 테스트 클래스페스 설정 > Modules > resources = Test Resources 설정
 - 활용
 	- junit.jupiter.**testinstance.lifecycle.default** = per_class (전체 적용)
-	- junit.jupiter.**extensions.autodetection.enabled** = true : 확장팩 자동 감지
+	- junit.jupiter.**extensions.autodetection.enabled** = true : 자동 extension 등록, 확장팩 자동 감지
 	-  junit.jupiter.**conditions.deactivate** = org.junit.*DisabledCondition : @Disabled 무시하고 실행
 	- junit.jupiter.**displayname.generator.default** = \\ <-줄바꿈
 	  org.junit.jupiter.api.DisplayNameGenerator$ReplaceUndersources
 		- 참고로 DisplayName이 우선순위 더 높음
-	- junit.jupiter.**extensions.autodetection.enabled**= true : 자동 extension 등록
 ---
 ## 확장 모델
 - JUnit 4의 확장모델 : @RunWith(Runner), TestRule, MethodRule

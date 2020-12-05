@@ -126,7 +126,7 @@ void parameterizedTest(String message) { print(message) }
 - 경로 : test > resources > junit-platform.properties
 - inteliJ 에서 테스트 클래스페스 설정 > Modules > resources = Test Resources 설정
 - 활용
-	- junit.jupiter.**testinstance.lifecycle.defualt** = per_class (전체 적용)
+	- junit.jupiter.**testinstance.lifecycle.default** = per_class (전체 적용)
 	- junit.jupiter.**extensions.autodetection.enabled** = true : 확장팩 자동 감지
 	-  junit.jupiter.**conditions.deactivate** = org.junit.*DisabledCondition : @Disabled 무시하고 실행
 	- junit.jupiter.**displayname.generator.default** = \\ <-줄바꿈

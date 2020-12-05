@@ -1,4 +1,5 @@
 
+
 # JUnit
 ## JUnit5
 
@@ -98,6 +99,61 @@ void parameterizedTest(String message) { print(message) }
 		- @Override **aggregateArguments**( ) : 함수 구현 필요
 		- **@AggregateWith**(xxxAggregator.class) 로 여러 인자값 변형 가능.
 ---
+## 테스트 인스턴스
+- 테스트 마다 클래스 인스턴스가 새로 생김
+	- 이유 : 테스트 간 **의존성을 제거하기 위함.** 실행 순서에 영항 없도록
+		-  테스트는 선언 순서대로 수행된다는 보장 없음. 
+		- JUnit5는 선언된 순서로 수행되는게 일반적.
+	- 해결방법
+		- **@TestInstance(TestInstance.Lifecycle.PER_CLASS)** : 클래스마다 인스턴스 하나 생성 > 클래스 위에 선언하면 클래스 내에서 하나의 인스턴스를 공유하여 사용
+		- @BeforeAll / @AfterAll = static method 선언 필요, 그러나 @TestInstance 선언 시 static일 필요가 없음.
+
+---
+## 테스트 순서
+- 특정 정해진 수행 순서가 있음 -> 그러나 순서에 의존하면 안 됨. 언제나 바뀔 수 있도록 해야 함.
+(단위 테스트는 다른 단위테스트와 독립적으로 수행 가능해야 함.)
+
+- 때로는 원하는 순서대로 테스트가 필요할 때가 있음.
+	- @TestInstance 활용하여 흐름 테스트 가능(상태공유)
+	- **@TestMethodOrder(MethodOrderer class 구현체)**
+		- ex) @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+				**@Order**(1) <- Spring 제공하는 Annotation말고 JUnit 사용
+				**@Order**(2) ... : 테스트 위에 수행 순서 명시
+
+---
+## JUnit 5 설정파일
+- 경로 : test > resources > junit-platform.properties
+- inteliJ 에서 테스트 클래스페스 설정 > Modules > resources = Test Resources 설정
+- 활용
+	- junit.jupiter.**testinstance.lifecycle.defualt** = per_class (전체 적용)
+	- junit.jupiter.**extensions.autodetection.enabled** = true : 확장팩 자동 감지
+	-  junit.jupiter.**conditions.deactivate** = org.junit.*DisabledCondition : @Disabled 무시하고 실행
+	- junit.jupiter.**displayname.generator.default** = \\ <-줄바꿈
+	  org.junit.jupiter.api.DisplayNameGenerator$ReplaceUndersources
+		- 참고로 DisplayName이 우선순위 더 높음
+	- junit.jupiter.**extensions.autodetection.enabled**= true : 자동 extension 등록
+---
+## 확장 모델
+- JUnit 4의 확장모델 : @RunWith(Runner), TestRule, MethodRule
+- JUnit 5의 확장모델 : Extension 단 하나
+- ex) FindSlowTestExtension : 실행이 Slow인 테스트 찾는 Extension
+	- **implements BeforeTestExecutionCallback, AfterTestExecutionCallback** 
+	- @Override **beforeTestExecution / afterTestExeucution** **(ExtensionContext context)**
+		- SlowTest annotation = **context.getRequiredTestMethod().getAnnotation**(SlowTest.class)
+		- String testClassName = **context.getRequiredTestClass().getName**()
+		- String testMethodName = **context.getRequiredTestMethod().getName**()
+		- **ExtensionContext.Store** store = **context.getStore(ExtensionContext.Namespace.create**(testClassName, testMethodName))
+		- Before : start_time = store.put("START_TIME", System.currentTimeMillis())
+		- After : start_time = store.remove("START_TIME", long.class)
+			- duration = curr - start_time
+			- if(duration > THRESHOLD && annotation === null) : 시간 초과 + SlowTest annotation이 없는 경우 출력하도록
+- **등록 방법**
+	 1. **선언적 등록** : @ExtendWith(FinSlowTestExtension.class)
+	 2. **프로그래밍 등록** : @RegisterExtension > static XxxExtension oo = new XxxExtension( .. );
+	 3. **설정파일 등록** : junit.jupiter.extensions.autodetection.enabled= true 
+
+---
+
 ### TIP
 - lambda 표현식 = 호출 할 때만 수행
 - InteliJ 단축키

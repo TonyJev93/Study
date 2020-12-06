@@ -28,7 +28,7 @@
 > 테스트 이름표시
 
 
-* **@DisplayNameGeneration** : Method와 Class 레퍼런스를 사용하여 테스트 이름 표기하는 방법 설정
+* **@DisplayNameGeneration** : Method와 Class 레퍼런스를 사용하여 테스트 이름 표기하는 방법 설정<br>
 (기본 구현체 :  ReplaceUnderscores 제공 = 이름에 밑줄을 공백으로 변경)
 * **@DisplayName** : 테스트 이름 쉽게 표현, 이모지 추가 가능 (@DisplayNameGeneration 보다 우선순위 높음)
 * **참고** : **[https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-names](https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-names)**
@@ -39,7 +39,7 @@
 - **assertTrue(boolean)** : 다음 조건이 참(true)인지 확인
 - **assertAll(executables...)** :  괄호 안 모든 테스트 구문 수행
 - **assertThrows(expectedType, executable)** : 예외 발생 확인, exception을 Return - 내부 오류 메시지와 기대되는 메시지 비교 가능
-- **assertTimeout(duration, executable)** : 특정 시간 안에 실행이 완료되는지 확인, 설정한 Timeout과 관계없이 executable이 끝날 때 까지 수행됨. 
+- **assertTimeout(duration, executable)** : 특정 시간 안에 실행이 완료되는지 확인, 설정한 Timeout과 관계없이 executable이 끝날 때 까지 수행됨. <br>
 ->  **assertTimeoutPreemptively** : 설정한 Timeout 까지만 수행 후 종료 (ThreadLocal 사용 시 주의, assertTimeout 사용이 더 안정적임)
 
 ---
@@ -57,17 +57,17 @@
 ### Tag
 - @Tag("Msg") : 테그 별 테스트 수행 가능 ( @Tag("fast"), @Tag("slow") )
 	- InteliJ > Edit Configuration > Test kind > Tags > Tag expression
-	- 빌드 설정 > pom.xml > profiles  > build > plugins >  configuration : groups = fast | slow 
+	- 빌드 설정 > pom.xml > profiles  > build > plugins >  configuration : groups = fast | slow <br>
 	(표현식 참고 : https://junit.org/junit5/docs/current/user-guide/#running-tests-tag-expressions)
 		- ./mvnw test(default)로 실행 ( ./mvnw test -P ci 전체 테스트 수행)
 ### Custom Tag
 - Tag Annotation을 사용자 설정하여 사용
 - Tag를 클래스화 시킨다.
-	- ex) FastTest 클래서 생성(@FastTest Annotation)
-		@Target(ElementType.METHOD) : 메서드를 대상으로 Annotation 사용
-		@ Retention(RetentionPolicy.RUNTIME) : 런타임에 유효
-		@ Test
-		@ Tag("fast")
+	- ex) FastTest 클래서 생성(@FastTest Annotation)<br>
+		@Target(ElementType.METHOD) : 메서드를 대상으로 Annotation 사용<br>
+		@ Retention(RetentionPolicy.RUNTIME) : 런타임에 유효<br>
+		@ Test<br>
+		@ Tag("fast")<br>
 		public @interface FastTest {	}
 	- TEST Source > @FastTest(클래스명)으로 대체하여 사용
 - 장점 : 오타를 줄일 수 있음. 중복 제거.
@@ -77,19 +77,14 @@
 - **@RepeatedTest(value = 10, name = "{displayName}, {currentRepetition}/{totalRepetitions} )** : 반복 횟수, 테스트 이름, 현재 반복 수, 전체 반복 수
 - void repeatTest(**RepetitionInfo** repetitionInfo) 
 	- repetitionInfo.getCurrentRepitition() : 현재 반복된 횟수
-
 - **@ParameterizedTest** (name = "{index} {displayName} message={0}" : 파라미터를 통한 테스트(테스트마다 값 변경 테스트)
 **@ValueSource**(strings = {"날씨가", "많이", "추워지고", "있네요."})
 **@EmptySource** : 비어있는 문자열 추가로 전달
-**@NullSource** : null 값 추가로 전달 (@NullAndEmptySource : null&empty)
+**@NullSource** : null 값 추가로 전달 (@NullAndEmptySource : null&empty)<br>
 void parameterizedTest(String message) { print(message) }
-
 - **SimpleArgumentConverter** : 인자값 커스텀하게 변환
 	- @Override **function convert** 필요
 	- @ConvertWith 로 인자값 앞에 선언하여 형변환 (하나의 인자값 받을 때 사용) 
-
-
-
 - **@CvsSource({"10, '자바 스터디'", "20, 스프링"})** : 여러 인자 전달
 	- **ArgumentsAccessor** argumentsAccessor : 인자값 접근 클래스
 		- argumentsAccessor.getInteger(0), argumentsAccessor.getString(1)
@@ -108,14 +103,13 @@ void parameterizedTest(String message) { print(message) }
 
 ---
 ## 테스트 순서
-- 특정 정해진 수행 순서가 있음 -> 그러나 순서에 의존하면 안 됨. 언제나 바뀔 수 있도록 해야 함.
+- 특정 정해진 수행 순서가 있음 -> 그러나 순서에 의존하면 안 됨. 언제나 바뀔 수 있도록 해야 함.<br>
 (단위 테스트는 다른 단위테스트와 독립적으로 수행 가능해야 함.)
-
 - 때로는 원하는 순서대로 테스트가 필요할 때가 있음.
 	- @TestInstance 활용하여 흐름 테스트 가능(상태공유)
 	- **@TestMethodOrder(MethodOrderer class 구현체)**
-		- ex) @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-				**@Order**(1) <- Spring 제공하는 Annotation말고 JUnit 사용
+		- ex) @TestMethodOrder(MethodOrderer.OrderAnnotation.class)<br>
+				**@Order**(1) <- Spring 제공하는 Annotation말고 JUnit 사용<br>
 				**@Order**(2) ... : 테스트 위에 수행 순서 명시
 
 ---
@@ -126,7 +120,7 @@ void parameterizedTest(String message) { print(message) }
 	- junit.jupiter.**testinstance.lifecycle.default** = per_class (전체 적용)
 	- junit.jupiter.**extensions.autodetection.enabled** = true : 자동 extension 등록, 확장팩 자동 감지
 	-  junit.jupiter.**conditions.deactivate** = org.junit.*DisabledCondition : @Disabled 무시하고 실행
-	- junit.jupiter.**displayname.generator.default** = \\ <-줄바꿈
+	- junit.jupiter.**displayname.generator.default** = \\ <-줄바꿈<br>
 	  org.junit.jupiter.api.DisplayNameGenerator$ReplaceUndersources
 		- 참고로 DisplayName이 우선순위 더 높음
 ---

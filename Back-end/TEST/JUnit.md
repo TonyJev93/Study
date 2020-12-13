@@ -158,7 +158,10 @@ void parameterizedTest(String message) { print(message) }
 - JUnit 4 마이그래이션 
 	- Vintage 의존성 추가 필요, Jupiter와 Vintage를 구분하여 테스트에 보여줌.
 	- @Rule은 기본적으로 지원하지 않음.(@EnableRuleMigrationSupport를 사용하면 ExtenalResource, Verifier, ExpectedExeption 지원) <- **junit-jupiter-migrationsupport 모듈**이 제공
-	
+- Test DB : 개발/운영 DB와 동일한 DB사용 권장(테스트 환경과 운영환경의 일관성 유지)
+    - application-test.properties 내에 테스트 DB 별도로 설정(개발/운영과 구분) :: @ActiveProfiles("test")로 적용 
+    - ddl 속성 : create-drop (해당 스키마 drop 후 재생성)
+    - docker 이용하여 효율적 DB 설정(Testcontainers 라이브러리 사용)
 	
 ### 예제
 -  https://github.com/keesun/inflearn-the-java-test (출처 : 백기선 git)

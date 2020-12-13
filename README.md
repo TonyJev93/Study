@@ -15,8 +15,8 @@
 - Build tools
 	- MAVEN vs Gradle vs Ant
 - TEST
-    - [JUnit](https://github.com/TonyJev93/Study/blob/main/Back-end/TEST/JUnit.md)
-    - [Mockito](https://github.com/TonyJev93/Study/blob/main/Back-end/TEST/Mockito.md)
+    - [JUnit](./Back-end/TEST/JUnit.md)
+    - [Mockito](./Back-end/TEST/Mockito.md)
     - [Testcontainers](./Back-end/TEST/Testcontainers.md)
 
 ### Front-end

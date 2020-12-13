@@ -70,4 +70,6 @@
 - DB Comparison
 - Library vs Framework vs API
 - IDE Comparison
+- JWT
+- SSL
 

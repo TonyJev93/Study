@@ -9,6 +9,7 @@
 	- Mapping
 - API Gateway
 - Restful API
+    - RestDocs
 	- HATEOAS
 - WebFlux
 - Lombok

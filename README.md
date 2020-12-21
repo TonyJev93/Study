@@ -5,6 +5,7 @@
 - Pagination
 - [OAuth2](Back-end/OAuth2.md)
 - JPA
+	- [Audit](Back-end/JPA/Audit.md)
 	- DB Lock
 	- Mapping
 - API Gateway
@@ -37,7 +38,7 @@
 ### Infra
 - Docker
 - K8s
-- Git
+- [Git](Infra/Git.md)
 - MQ
 - Redis
 - AWS

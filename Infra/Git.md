@@ -11,3 +11,10 @@
     3. git commit -m "init"
     4. git remote add origin {git-repository-url}
     5. git push -u origin master
+
+### Push
+
+- 현재와 다른 Branch에 push
+```
+git push <remote> <local_branch>:<remote_branch>
+```

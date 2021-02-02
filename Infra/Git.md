@@ -12,6 +12,12 @@
     4. git remote add origin {git-repository-url}
     5. git push -u origin master
 
+### 신규 Branch 원격 등록
+
+```
+git push --set-upstream origin develop
+```
+
 ### Push
 
 - 현재와 다른 Branch에 push

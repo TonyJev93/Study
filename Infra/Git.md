@@ -15,7 +15,7 @@
 ### 신규 Branch 원격 등록
 
 ```
-git push --set-upstream origin develop
+git push --set-upstream origin {branch_name}
 ```
 
 ### Push

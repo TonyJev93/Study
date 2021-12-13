@@ -2,6 +2,18 @@
 
 ## Basic
 
+### 사용자 정보 변경
+
+```
+# 전역 사용자명/이메일 구성
+git config --global user.name "Your name"
+git config --global user.email "Your email adderss"
+
+# 저장소별 사용자명/이메일 구성(해당 저장소 디렉터리 이동 후)
+git config user.name "Your name"
+git config user.email "Your email adderss"
+```
+
 ### Repository 등록
 
 1. Git에서 Repository 신규 생성

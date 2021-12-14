@@ -24,6 +24,9 @@ git config user.email "Your email adderss"
     4. git remote add origin {git-repository-url}
     5. git push -u origin master
 
+### Git Push Token 오류 해결
+URL : https://hyeo-noo.tistory.com/184
+
 ### 신규 Branch 원격 등록
 
 ```

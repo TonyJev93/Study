@@ -80,6 +80,23 @@
 -> BatchAutoConfiguration
 ```
 
+### 배치 시작하기
+* @Configuration 선언
+    - 하나의 배치 Job을 정의하고 빈 설정
+* JobBuilderFactory
+    - Job 을 생성하는 빌더 팩토리
+* StepBuilderFactory
+    - Step 을 생성하는 빌더 팩토리
+* Job
+    - 일, 일감
+* Step
+    - 일의 항목, 단계
+* tasklet
+    - Step 안에서 단일 태스크로 수행되는 로직 구현
+    - 작업 내용
+    - Step 내에서 기본적으로 무한 반복 됨. (return null = 1회 수행 = RepeatStatus)
+* Job 구동 -> Step 실행 -> Tasklet 실행
+
 
 ---
 

@@ -128,7 +128,7 @@
 1. ExecutionContext
 1. JobRepository / JobLauncher
 
-### Job
+## Job
 - 기본 개념
     - 배치 계층 구조에서 가장 상위에 있는 개념
     - 배치작업을 어떻게 구성하고 실행할 것인지 전체적으로 설정하고 명세해 놓은 객체
@@ -187,6 +187,24 @@
 - BATCH_JOB_EXECUTION 테이블 매핑
     - JobInstance와 JobExecution는 1:M 관계
     - JobInstance에 대한 성공/실패 내역을 가짐
+    
+
+## Step
+- 기본 개념
+    - Batch Job을 구성하는 독립적인 하나의 단계(Step 간에 간섭 X)
+    - 실제 배치 처리를 정의하고 컨트롤하는 데 필요한 모든 정보를 가지고 있는 도메인 객체
+    - 단순한 단일 테스크 뿐 아니라 입력과 처리, 출력과 관련된 복잡한 비즈니스 로직을 포함하는 모든 설정들을 담고 있음.
+    - 배치작업을 어떻게 구성할 것인지, Job의 세부 작업을 Task 기반으로 설정하고 명세해 놓은 객체
+    - 모든 Job은 하나 이상의 Step으로 구성됨
+- 기본 구현체
+    - TaskletStep
+        - 가장 기본이 되는 클래스로서 Tasklet 타입의 구현체들을 제어
+    - PartitionStep
+        - 멀티 스레드 방식으로 Step 을 여러 개로 분리해서 실행.
+    - JobStep
+        - Step 내에서 Job을 실행하도록 한다.
+    - FlowStep
+        - Step 내에서 Flow를 실행하도록 한다.
     
 
 

@@ -153,8 +153,41 @@
 - BATCH_JOB_INSTANCE 테이블과 매핑
     - JOB_NAME(Job) 과 JOB_KEY(JobParameter 해시값) 가 동일한 데이터는 중복해서 저장할 수 없음  
 
-- JobParameters
-- JobExecution
+### JobParameters
+- 기본 개념
+    - Job을 실행할 때 함께 포함되어 사용되는 파라미터를 가진 도메인 객체
+    - 하나의 Job에 존재할 수 있는 여러개의 JobInstance를 구분하기 위한 용도
+    - JobParameter와 JobInstance는 1:1 관계
+- 생성 및 바인딩
+    - 어플리케이션 실행 시 주입
+        - java -jar LogBatch.jar requestDate=20210101
+    - 코드로 생성
+        - JobParameterBuilder, DefaultJobParametersConverter
+    - SpEL 이용
+        - @Value("#{jobParameter[requestDate]}")
+        - @JobScope, @StepScope 선언 필수
+- BATCH_JOB_EXECUTION_PARAM 테이블과 매핑
+    - JOB_EXECUTION 과 1:M 의 관계
+- Parameter 타입
+    - STRING
+    - DATE
+    - LONG
+    - DOUBLE
+
+### JobExecution
+- 기본 개념
+    - JobInstance에 대한 한번의 시도를 의미하는 객체
+    - Job 실행 중에 발생한 정보들을 저장하고 있는 객체
+        - 시작시간, 종료시간, 상태(시작됨, 완료, 실패), 종료상태
+    - JobInstance 와의 관계
+        - JobExecution 은 "FAILED" or "COMPLETED" 등의 실행상태를 가지고 있음.
+        - JobExecution 실행상태가 "COMPLETED"인 경우 JobInstance 실행이 완료된 것으로 간주하여 재 실행 불가.
+        - "FAILED"면 JobInstance 실행이 완료되지 않은 것으로 간주하여 재실행이 가능함.
+        - "COMPLETED" 될 때까지 하나의 JobInstance 내에서 여러 번 시도 가능.
+- BATCH_JOB_EXECUTION 테이블 매핑
+    - JobInstance와 JobExecution는 1:M 관계
+    - JobInstance에 대한 성공/실패 내역을 가짐
+    
 
 
 ---

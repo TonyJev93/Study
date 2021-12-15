@@ -3,6 +3,7 @@
 
 0. 개요
 1. 시작
+2. 도메인 이해
 
 ----
 
@@ -96,6 +97,54 @@
     - 작업 내용
     - Step 내에서 기본적으로 무한 반복 됨. (return null = 1회 수행 = RepeatStatus)
 * Job 구동 -> Step 실행 -> Tasklet 실행
+
+
+### DB 스키마 생성
+#### 스프링 배치 메타 데이터
+- 배치의 실행 및 관리를 위한 목적
+- Job, Step, JobPrameters .. 등의 도메인 정보들을 저장, 업데이트, 조회 할 수 있는 스키마 제공
+- 과거, 현재의 실행에 대한 상세한 정보, 성공/실패 여부 등 관리
+- DB 연동 시 필수적으로 메타 테이블 생성이 되어야 함
+
+#### 스키마 생성 설정
+- 수동 생성 : 쿼리 복사 후 직접 실행
+- 자동 생성 : spring.batch.jdbc.initialize-schema
+    - ALWAYS
+        - 스크립트 항상 실행
+        - RDBMS 설정이 되어 있을 경우 내장 DB 보다 우선적으로 실행
+    - EMBEDDED(default)
+        - 내장 DB일 때만 자동 실행 됨.
+    - NEVER
+        - 스크립트 항상 실행 안함.
+        - 내장 DB 일 경우 스크립트가 생성이 되지 않아 오류 발생
+        - **운영에서 수동으로 스크립트 생성 후 설정하는 것을 권장**
+
+--- 
+
+## 2. 도메인 이해
+### 목록
+1. Job
+1. Step
+1. ExecutionContext
+1. JobRepository / JobLauncher
+
+### Job
+- 기본 개념
+    - 배치 계층 구조에서 가장 상위에 있는 개념
+    - 배치작업을 어떻게 구성하고 실행할 것인지 전체적으로 설정하고 명세해 놓은 객체
+    - 배치 Job을 구성하기 위한 최상위 인터페이스이며 기본 구현체를 스프링 배치가 제공
+    - 여러 Step(1개 이상)을 포함하고 있는 컨테이너 역할
+- 기본 구현체
+    - SimpleJob
+        - 순차적으로 Step 을 실행시키는 Job
+    - FlowJob
+        - 특정 조건과 흐름에 따라 Step 을 구성하여 실행시키는 Job
+        - Flow 객체를 실행시켜 작업을 진행
+    
+- Job
+- JobInstance
+- JobParameters
+- JobExecution
 
 
 ---

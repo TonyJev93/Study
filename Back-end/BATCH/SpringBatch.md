@@ -140,9 +140,19 @@
     - FlowJob
         - 특정 조건과 흐름에 따라 Step 을 구성하여 실행시키는 Job
         - Flow 객체를 실행시켜 작업을 진행
-    
-- Job
-- JobInstance
+
+### JobInstance
+- 기본 개념
+    - Job이 실행될 때마다 생성되는 고유 식별 작업 실행을 나타냄
+    - Job의 설정과 구성은 동일하지만 Job이 실행되는 시점에 처리하는 내용이 다르기 때문에 Job의 실행을 구분해야 함
+    - JobInstance 생성 및 실행
+        - 처음 시작하는 Job + JobParameter 일 경우 새로운 JobInstance 생성
+        - 이전과 동일한 Job + JobParameter 로 실행 시 기존 JobInstance 리턴
+            - 내부적으로 JobName + JobKey(JobParameters 해시값)을 가지고 JobInstance 객체를 DB로 부터 얻음.
+    - Job과 1:M 관계 
+- BATCH_JOB_INSTANCE 테이블과 매핑
+    - JOB_NAME(Job) 과 JOB_KEY(JobParameter 해시값) 가 동일한 데이터는 중복해서 저장할 수 없음  
+
 - JobParameters
 - JobExecution
 

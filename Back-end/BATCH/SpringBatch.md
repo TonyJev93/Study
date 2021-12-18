@@ -13,7 +13,7 @@
 - 자바 기반 표준 배치 기술 부재(JSR)
 - ex) IO, Network(TCP, UDP), Thread, JDBC ...
 - SpringSource(현 Pivotal)와 Accenture(경영 컨설팅 기업)의 합작품
-- Accenture가 가지고 있던 아키텍처 프레임워크를 Batch 프로젝트에 기증함
+- Accenture 가 가지고 있던 아키텍처 프레임워크를 Batch 프로젝트에 기증함
 
 ### 배치 핵심 패턴
 - Read - DB/File/Que 에서 다량의 데이터를 조회
@@ -26,7 +26,7 @@
 
 ### 배치 시나리오
 - 배치 프로세스를 주기적으로 커밋 : 대용량의 데이터를 한번에 커밋하지 않고 나누어 커밋
-- 동시 다발적인 Job의 배치 처리, 대용량 병렬 처리 가능 : Job간의 간섭 X, 멀티스레드를 통한 대용량 처리
+- 동시 다발적인 Job 의 배치 처리, 대용량 병렬 처리 가능 : Job 간의 간섭 X, 멀티스레드를 통한 대용량 처리
 - 실패 후 수동 또는 스케쥴링에 의해 재시작
 - 의존관계가 있는 step 여러 개를 순차적으로 처리
 - 조건적 Flow 구성을 통한 체계적이고 유연한 배치 모델 구성
@@ -38,7 +38,7 @@
   - Application
       - 개발자는 업무 로직에만 집중, 공통 기반기술은 프레임웍이 담당.
   - Batch Core
-      - Job을 실행, 모니터링, 관리하는 API로 구성
+      - Job 을 실행, 모니터링, 관리하는 API 로 구성
       - JobLauncher, Job, Step, Flow 등이 속함.
   - Batch Infrastructure 
       - Application, Core 모두 공통 Infrastructure 위에서 빌드 됨.
@@ -53,7 +53,7 @@
 - 스프링 배치 활성화
   - @EnableBatchProcessing
   - 총 4개의 설정 클래스를 실행시키며 스프링 배치의 모든 초기화 및 실행 구성이 이루어짐.
-  - 스프링 부트 배치의 자동 설정 클래스가 생성됨으로 빈으로 등록된 모든 Job을 검색해서 초기화와 동시에 Job을 수행하도록 구성됨.
+  - 스프링 부트 배치의 자동 설정 클래스가 생성됨으로 빈으로 등록된 모든 Job 을 검색해서 초기화와 동시에 Job 을 수행하도록 구성됨.
 
 - 스프링 배치 초기화 설정 클래스
   1. BatchAutoConfiguration
@@ -83,7 +83,7 @@
 
 ### 배치 시작하기
 * @Configuration 선언
-    - 하나의 배치 Job을 정의하고 빈 설정
+    - 하나의 배치 Job 을 정의하고 빈 설정
 * JobBuilderFactory
     - Job 을 생성하는 빌더 팩토리
 * StepBuilderFactory
@@ -102,7 +102,7 @@
 ### DB 스키마 생성
 #### 스프링 배치 메타 데이터
 - 배치의 실행 및 관리를 위한 목적
-- Job, Step, JobPrameters .. 등의 도메인 정보들을 저장, 업데이트, 조회 할 수 있는 스키마 제공
+- Job, Step, JobParameters .. 등의 도메인 정보들을 저장, 업데이트, 조회 할 수 있는 스키마 제공
 - 과거, 현재의 실행에 대한 상세한 정보, 성공/실패 여부 등 관리
 - DB 연동 시 필수적으로 메타 테이블 생성이 되어야 함
 
@@ -132,7 +132,7 @@
 - 기본 개념
     - 배치 계층 구조에서 가장 상위에 있는 개념
     - 배치작업을 어떻게 구성하고 실행할 것인지 전체적으로 설정하고 명세해 놓은 객체
-    - 배치 Job을 구성하기 위한 최상위 인터페이스이며 기본 구현체를 스프링 배치가 제공
+    - 배치 Job 을 구성하기 위한 최상위 인터페이스이며 기본 구현체를 스프링 배치가 제공
     - 여러 Step(1개 이상)을 포함하고 있는 컨테이너 역할
 - 기본 구현체
     - SimpleJob
@@ -143,21 +143,21 @@
 
 ### JobInstance
 - 기본 개념
-    - Job이 실행될 때마다 생성되는 고유 식별 작업 실행을 나타냄
-    - Job의 설정과 구성은 동일하지만 Job이 실행되는 시점에 처리하는 내용이 다르기 때문에 Job의 실행을 구분해야 함
+    - Job 이 실행될 때마다 생성되는 고유 식별 작업 실행을 나타냄
+    - Job 의 설정과 구성은 동일하지만 Job 이 실행되는 시점에 처리하는 내용이 다르기 때문에 Job 의 실행을 구분해야 함
     - JobInstance 생성 및 실행
         - 처음 시작하는 Job + JobParameter 일 경우 새로운 JobInstance 생성
         - 이전과 동일한 Job + JobParameter 로 실행 시 기존 JobInstance 리턴
             - 내부적으로 JobName + JobKey(JobParameters 해시값)을 가지고 JobInstance 객체를 DB로 부터 얻음.
-    - Job과 1:M 관계 
+    - Job 과 1:M 관계 
 - BATCH_JOB_INSTANCE 테이블과 매핑
     - JOB_NAME(Job) 과 JOB_KEY(JobParameter 해시값) 가 동일한 데이터는 중복해서 저장할 수 없음  
 
 ### JobParameters
 - 기본 개념
-    - Job을 실행할 때 함께 포함되어 사용되는 파라미터를 가진 도메인 객체
-    - 하나의 Job에 존재할 수 있는 여러개의 JobInstance를 구분하기 위한 용도
-    - JobParameter와 JobInstance는 1:1 관계
+    - Job 을 실행할 때 함께 포함되어 사용되는 파라미터를 가진 도메인 객체
+    - 하나의 Job 에 존재할 수 있는 여러개의 JobInstance 를 구분하기 위한 용도
+    - JobParameter 와 JobInstance 는 1:1 관계
 - 생성 및 바인딩
     - 어플리케이션 실행 시 주입
         - java -jar LogBatch.jar requestDate=20210101
@@ -176,7 +176,7 @@
 
 ### JobExecution
 - 기본 개념
-    - JobInstance에 대한 한번의 시도를 의미하는 객체
+    - JobInstance 에 대한 한번의 시도를 의미하는 객체
     - Job 실행 중에 발생한 정보들을 저장하고 있는 객체
         - 시작시간, 종료시간, 상태(시작됨, 완료, 실패), 종료상태
     - JobInstance 와의 관계
@@ -185,26 +185,26 @@
         - "FAILED"면 JobInstance 실행이 완료되지 않은 것으로 간주하여 재실행이 가능함.
         - "COMPLETED" 될 때까지 하나의 JobInstance 내에서 여러 번 시도 가능.
 - BATCH_JOB_EXECUTION 테이블 매핑
-    - JobInstance와 JobExecution는 1:M 관계
-    - JobInstance에 대한 성공/실패 내역을 가짐
+    - JobInstance 와 JobExecution 는 1:M 관계
+    - JobInstance 에 대한 성공/실패 내역을 가짐
     
 
 ## Step
 - 기본 개념
-    - Batch Job을 구성하는 독립적인 하나의 단계(Step 간에 간섭 X)
+    - Batch Job 을 구성하는 독립적인 하나의 단계(Step 간에 간섭 X)
     - 실제 배치 처리를 정의하고 컨트롤하는 데 필요한 모든 정보를 가지고 있는 도메인 객체
     - 단순한 단일 테스크 뿐 아니라 입력과 처리, 출력과 관련된 복잡한 비즈니스 로직을 포함하는 모든 설정들을 담고 있음.
-    - 배치작업을 어떻게 구성할 것인지, Job의 세부 작업을 Task 기반으로 설정하고 명세해 놓은 객체
-    - 모든 Job은 하나 이상의 Step으로 구성됨
+    - 배치작업을 어떻게 구성할 것인지, Job 의 세부 작업을 Task 기반으로 설정하고 명세해 놓은 객체
+    - 모든 Job 은 하나 이상의 Step 으로 구성됨
 - 기본 구현체
     - TaskletStep
         - 가장 기본이 되는 클래스로서 Tasklet 타입의 구현체들을 제어
     - PartitionStep
         - 멀티 스레드 방식으로 Step 을 여러 개로 분리해서 실행.
     - JobStep
-        - Step 내에서 Job을 실행하도록 한다.
+        - Step 내에서 Job 을 실행하도록 한다.
     - FlowStep
-        - Step 내에서 Flow를 실행하도록 한다.
+        - Step 내에서 Flow 를 실행하도록 한다.
     
 ### StepExecution
 - 기본 개념
@@ -246,6 +246,24 @@
     - step_execution_id
     - short_context : 공유 정보 Map
     - serialized_context
+    
+### JobRepository
+- 기본 개념
+    - 배치 작업 중의 정보를 저장하는 저장소 역할
+    - Job 이 언제 수행되었고, 언제 끝났으며, 몇 번이 실행되었고 실행에 대한 결과 등의 배치 작업의 수행과 관련된 모든 meta data 를 저장함
+        - JobLauncher, Job, Step 구현체 내부에서 CRUD 기능을 처리함
+ - JobRepository 설정
+    - @EnableBatchProcessing 어노테이션만 선언하면 JobRepository 가 자동으로 빈으로 생성됨
+    - BatchConfigurer 인터페이스를 구현하거나 BasicBatchConfigurer 를 상속해서 JobRepository 설정을 커스터마이징 할 수 있다.
+        - JDBC 방식으로 설정 - JobRepositoryFactoryBean
+            - 내부적으로 AOP 기술을 통해 트랜잭션 처리를 해주고 있음
+            - 트랜잭션 isolation 의 기본값은 SERIALIZABLE 로 최고 수준, 다른 레벨(READ_COMMITTED, REPEATABLE_READ)로 지정 가능
+              - [참고](https://joont92.github.io/db/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EA%B2%A9%EB%A6%AC-%EC%88%98%EC%A4%80-isolation-level/)
+            - 메타테이블의 Table Prefix 를 변경할 수 있음(기본 값 : "BATCH_")
+    - In Memory 방식으로 설정 - MapJobRepositoryFactoryBean
+        - 성능 등의 이유로 도메인 오브젝트를 굳이 데이터베이스에 저장하고 싶지 않을 경우
+        - 보통 Test 나 프로토타입의 빠른 개발이 필요할 때 사용
+
 ---
 
 ## 출처

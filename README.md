@@ -59,7 +59,7 @@
 
 ### Design
 
-- DDD
+- [DDD](Design/DDD.md)
 
 ### Development methodology
 

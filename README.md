@@ -53,10 +53,13 @@
 
 ### Architecture
 
-- DDD
 - MSA
   - Hexagonal Architecture
 - CQRS
+
+### Design
+
+- DDD
 
 ### Development methodology
 

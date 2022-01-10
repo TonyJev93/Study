@@ -86,5 +86,25 @@
 3. Client -> Query API : Query 요청, View Store 에서 결과 조회
 
 
+## Event Storming
+- Grouping 고려사항 3가지
+  - Data ownership (3가지 중 가장 큰 영향을 주는 요소)
+  - 독립된 배포 주기
+  - 독립적인 Scalability
+
+### Boris
+- Event Storming 을 통해 산출된 Aggregate 간의 통신을 도식화 하는 활동
+  - 서비스 후보들을 추출
+  - 서비스 간의 동기 / 비동기 통신 도식화
+
+### SNAP-E
+- 특정 Aggregate 에 대한 상세 Spec 을 명시
+  - API : 
+  - DATA
+  - User-Stroy
+  - RISK
+  - UI
+
 ## 참고
 - 강연 내용 : [DDD(Domain-Driven Design) 시작하기](https://www.youtube.com/watch?v=td5VRmxntmw&t=2160s)
+- 강연 내용 : [마이크로서비스 개발을 위한 Domain Driven Design](https://www.youtube.com/watch?v=QUMERCN3rZs)

@@ -61,6 +61,7 @@ $ brew services restart jenkins //젠킨스 재시작
 - Jenkins 관리 > 시스템 설정 > GitHub Server Add - Credentials Add
 ![img_4.png](img/img_4.png)
 - Git repository > Settings > Webhooks > add Webhook
+  - (참고) 예제 Repository = Tonyjev93/msa-spring-cloud-gateway-sample
   - Payload URL : http(s)://{jenkins 주소}/github-webhook/
   - Content type : json
   - Click : Just the push event, Active

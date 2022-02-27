@@ -51,10 +51,15 @@
 - Redis
 - AWS
 
+### DB
+
+- [ACID](DB/ACID.md) 
+
 ### Architecture
 
 - [MSA](Architecture/MSA/MSA.md)
   - Hexagonal Architecture
+  - [MSA Patterns](Architecture/MSA/MSA-Patterns.md)
 - CQRS
 
 ### Design

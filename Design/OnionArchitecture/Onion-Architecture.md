@@ -14,6 +14,7 @@
 - 기존 Multi-tier 구조 방식과 달리 Data Layer 에 의존하지 않고, 실질적인 도메인 모델에 의존한다. 
 
 ## 특징
+- 출처 : https://www.codeguru.com/csharp/understanding-onion-architecture/
 ![img.png](img.png)
 - 기존 구조(3 & n-tier)는 상호 Layer 간의 강한 의존성을 갖는 문제점이 있었음.
 - Onion Architecture 는 Domain 부터 Infrastructure 까지의 Layer 를 정의하므로서 위 문제점 해결

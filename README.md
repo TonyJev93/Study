@@ -65,7 +65,7 @@
 ### Design
 
 - [DDD](Design/DDD/DDD.md)
-- [도메인주도설계 도서](Design/DDD/도메인주도설계_도서.md)
+- [도메인주도설계 도서](Design/DDD/도메인주도설계-도서/도메인주도설계_도서.md)
 - [Onion-Architecture](Design/OnionArchitecture/Onion-Architecture.md)
 
 ### Development methodology

@@ -60,7 +60,7 @@
 - [MSA](Architecture/MSA/MSA.md)
   - Hexagonal Architecture
   - [MSA Patterns](Architecture/MSA/MSA-Patterns.md)
-- CQRS
+- [CQRS](Architecture/CQRS/CQRS.md)
 
 ### Design
 

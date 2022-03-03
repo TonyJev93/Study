@@ -8,23 +8,23 @@
 - Pagination
 - [OAuth2](Back-end/OAuth2.md)
 - JPA
-  - [Audit](Back-end/JPA/Audit.md)
-  - DB Lock
-  - Mapping
+    - [Audit](Back-end/JPA/Audit.md)
+    - DB Lock
+    - Mapping
 - API Gateway
 - Restful API
-  - [RestDocs](Back-end/RestfulAPI/RestDocs.md)
-  - [HATEOAS](Back-end/RestfulAPI/HATEOAS.md)
+    - [RestDocs](Back-end/RestfulAPI/RestDocs.md)
+    - [HATEOAS](Back-end/RestfulAPI/HATEOAS.md)
 - WebFlux
 - Lombok
 - Build tools
-  - MAVEN vs Gradle vs Ant
+    - MAVEN vs Gradle vs Ant
 - TEST
-  - [JUnit](Back-end/TEST/JUnit.md)
-  - [Mockito](Back-end/TEST/Mockito.md)
-  - [Testcontainers](Back-end/TEST/Testcontainers.md)
+    - [JUnit](Back-end/TEST/JUnit.md)
+    - [Mockito](Back-end/TEST/Mockito.md)
+    - [Testcontainers](Back-end/TEST/Testcontainers.md)
 - BATCH
-  - [Spring Batch](Back-end/BATCH/SpringBatch.md)
+    - [Spring Batch](Back-end/BATCH/SpringBatch.md)
 
 ### Front-end
 
@@ -53,14 +53,15 @@
 
 ### DB
 
-- [ACID](DB/ACID.md) 
+- [ACID](DB/ACID.md)
 
 ### Architecture
 
 - [MSA](Architecture/MSA/MSA.md)
-  - Hexagonal Architecture
-  - [MSA Patterns](Architecture/MSA/MSA-Patterns.md)
-- [CQRS](Architecture/CQRS/CQRS.md)
+    - Hexagonal Architecture
+    - [MSA Patterns](Architecture/MSA/MSA-Patterns.md)
+        - [CQRS](Architecture/CQRS/CQRS.md)
+        - [Event Sourcing](Architecture/Event-Sourcing/EventSourcing.md)
 
 ### Design
 
@@ -81,17 +82,18 @@
 ### SDK
 
 ### CI/CD
+
 - [Jenkins](CI-CD/Jenkins.md)
 
 ### ETC
 
 - OOP
-  - [SOLID](ETC/OOP/SOLID.md)
+    - [SOLID](ETC/OOP/SOLID.md)
 - Spring Version
 - Java Version
 - JWT
 - JVM
-  - Stack VS Heap
+    - Stack VS Heap
 - O(n)
 - Git-flow
 - DB Comparison

@@ -42,7 +42,6 @@
 
 ### Choreography-based saga
 - 무용수들이 자신의 역할을 알고 주변 다른 무용수에 반응하는 것과 같은 시스템
-- 
 ![img_1.png](img_1.png)
 
 ### Orchestration-based saga

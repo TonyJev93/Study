@@ -62,6 +62,7 @@
     - [MSA Patterns](Architecture/MSA/MSA-Patterns.md)
         - [CQRS](Architecture/CQRS/CQRS.md)
         - [Event Sourcing](Architecture/Event-Sourcing/EventSourcing.md)
+    - [분산 데이터 쿼리](Architecture/MSA/분산데이터쿼리/분산데이터쿼리.md)
 
 ### Design
 

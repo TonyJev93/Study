@@ -69,8 +69,7 @@
 - [DDD](Design/DDD/DDD.md)
 - [도메인주도설계 도서](Design/DDD/도메인주도설계-도서/도메인주도설계_도서.md)
 - [Onion-Architecture](Design/OnionArchitecture/Onion-Architecture.md)
-- Design Pattern
-    - [팩토리 메서드 패턴](Design/Design-Pattern/팩토리-메서드-패턴.md)
+- [Design Pattern](Design/Design-Pattern/Design-Pattern.md)
 
 ### Development methodology
 

@@ -64,6 +64,7 @@
         - [Event Sourcing](Architecture/Event-Sourcing/EventSourcing.md)
     - [분산 데이터 쿼리](Architecture/MSA/분산데이터쿼리/분산데이터쿼리.md)
         - [분산 DB 조회 설계](Architecture/MSA/분산데이터쿼리/분산DB조회설계/분산-DB-조회-설계.md)
+        - [API 조합기](Architecture/MSA/분산데이터쿼리/API-Composition/API-Composition.md)
 
 ### Design
 

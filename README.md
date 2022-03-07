@@ -16,6 +16,7 @@
     - [Testcontainers](Back-end/TEST/Testcontainers.md)
 - BATCH
     - [Spring Batch](Back-end/BATCH/SpringBatch.md)
+- [병렬 프로그래밍](Back-end/Parallel-Programming/Parallel-Programming.md)
 
 ### Front-end
 

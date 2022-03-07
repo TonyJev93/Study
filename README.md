@@ -4,21 +4,12 @@
 
 ### Back-end
 
-- Spring Security
-- Pagination
 - [OAuth2](Back-end/OAuth2.md)
 - JPA
     - [Audit](Back-end/JPA/Audit.md)
-    - DB Lock
-    - Mapping
-- API Gateway
 - Restful API
     - [RestDocs](Back-end/RestfulAPI/RestDocs.md)
     - [HATEOAS](Back-end/RestfulAPI/HATEOAS.md)
-- WebFlux
-- Lombok
-- Build tools
-    - MAVEN vs Gradle vs Ant
 - TEST
     - [JUnit](Back-end/TEST/JUnit.md)
     - [Mockito](Back-end/TEST/Mockito.md)
@@ -28,28 +19,13 @@
 
 ### Front-end
 
-- Bundle
-- Webpack
-- Express
 - [Vue](Front-end/Vue.md)
-- React
-- Bootstrap
-- Nuxt.js
 
 ### WEB
 
-- Web Server
-- CORS
-- Browser Camparison
-
 ### Infra
 
-- Docker
-- K8s
 - [Git](Infra/Git.md)
-- MQ
-- Redis
-- AWS
 
 ### DB
 
@@ -77,33 +53,71 @@
 ### Development methodology
 
 - [TDD](Development%20Methodology/TDD.md)
-- Xp
 
-### API
-
-- Overseas Stocks API
-- i'mport
-
-### SDK
+- OOP
+    - [SOLID](ETC/OOP/SOLID.md)
 
 ### CI/CD
 
 - [Jenkins](CI-CD/Jenkins.md)
 
+### OS
+
+- [Linux](ETC/Linux.md)
+
+---
+
+## TODO
+
 ### ETC
 
-- OOP
-    - [SOLID](ETC/OOP/SOLID.md)
-- Spring Version
-- Java Version
-- JWT
 - JVM
     - Stack VS Heap
 - O(n)
+
+### Git
+
 - Git-flow
-- DB Comparison
-- Library vs Framework vs API
-- IDE Comparison
+
+### Security
+
 - JWT
 - SSL
-- [Linux](ETC/Linux.md)
+
+### Spring
+
+- Spring Security
+- API Gateway
+- WebFlux
+- Build tools
+    - MAVEN vs Gradle vs Ant
+
+### FE
+
+- Bundle
+- Webpack
+- Express
+- React
+- Bootstrap
+- Nuxt.js
+
+### WEB
+
+- Web Server
+- CORS
+
+### DB
+
+- DB Lock
+
+### Development methodology
+
+- Xp
+
+### Infra
+
+- Docker
+- K8s
+- MQ
+- Redis
+- AWS

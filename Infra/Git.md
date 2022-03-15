@@ -40,6 +40,11 @@ git push --set-upstream origin {branch_name}
 git push <remote> <local_branch>:<remote_branch>
 ```
 
+### 캐시 삭제
+
+```
+git rm -r --cached .
+```
 
 ### Git Commit 규칙
 
